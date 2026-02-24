@@ -1,0 +1,23 @@
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <div class="messages content">
+      <h2>All Messages</h2>
+      <% messages.forEach(message => { %>
+        <div class="message">
+          <h3><%= message.user %></h3>
+          <p><%= message.text %></p>
+          <small><%= message.added.toDateString() %></small>
+          <form action="/messages/<%= message.id %>/delete" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>

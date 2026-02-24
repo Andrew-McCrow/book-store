@@ -1,0 +1,27 @@
+{
+  "name": "message-board",
+  "version": "1.0.0",
+  "description": "a simple message board application - https://www.theodinproject.com/lessons/node-path-nodejs-mini-message-board",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andrew-McCrow/message-board.git"
+  },
+  "author": "Andrew McCrow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andrew-McCrow/message-board/issues"
+  },
+  "homepage": "https://github.com/Andrew-McCrow/message-board",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "pg": "^8.18.0"
+  }
+}

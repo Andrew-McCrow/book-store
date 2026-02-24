@@ -1,0 +1,20 @@
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <div class="create-message content">
+      <h2>Muther Fucking Form</h2>
+      <form action="/new" method="POST">
+        <label for="text">Message text:</label>
+        <input type="text" id="text" name="text" required />
+        <label for="user">Message username:</label>
+        <input type="text" id="username" name="username" required />
+        <button>Submit</button>
+      </form>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>
