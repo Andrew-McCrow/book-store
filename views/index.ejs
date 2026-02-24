@@ -4,14 +4,12 @@
   <body>
     <%- include("./partials/nav.ejs") %>
 
-    <div class="messages content">
-      <h2>All Messages</h2>
-      <% messages.forEach(message => { %>
-        <div class="message">
-          <h3><%= message.user %></h3>
-          <p><%= message.text %></p>
-          <small><%= message.added.toDateString() %></small>
-          <form action="/messages/<%= message.id %>/delete" method="POST">
+    <div class="categories content">
+      <h2>All Movie Categories</h2>
+      <% categories.forEach(category => { %>
+        <div class="category">
+          <h3><%= category.name %></h3>
+          <form action="/categories/<%= category.id %>/delete" method="POST">
             <button type="submit">Delete</button>
           </form>
         </div>

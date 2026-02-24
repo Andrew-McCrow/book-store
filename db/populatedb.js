@@ -4,17 +4,32 @@ require("dotenv").config();
 const { Client } = require("pg");
 
 const SQL = `
-CREATE TABLE IF NOT EXISTS messages (
+CREATE TABLE IF NOT EXISTS categories (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  text TEXT,
-  "user" VARCHAR(255),
-  added TIMESTAMP
+  name VARCHAR(255) NOT NULL
 );
 
-INSERT INTO messages (text, "user", added)
+CREATE TABLE IF NOT EXISTS movies (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  title VARCHAR(255) NOT NULL,
+  director VARCHAR(255) NOT NULL,
+  year_released INTEGER NOT NULL,
+  category_id INTEGER REFERENCES categories(id)
+);
+
+INSERT INTO categories (name)
 VALUES
-  ('Hi there!', 'Amando', '2026-02-23 21:49:59.549227'),
-  ('Hello World!', 'Charles', '2026-02-23 21:49:59.549227');
+  ('Action'),
+  ('Drama'),
+  ('Romance'),
+  ('Animation');
+
+INSERT INTO movies (title, director, year_released, category_id)
+VALUES
+  ('The Dark Knight', 'Christopher Nolan', 2008, 1),
+  ('The Shawshank Redemption', 'Frank Darabont', 1994, 2),
+  ('Titanic', 'James Cameron', 1997, 3),
+  ('The Lion King', 'Roger Allers', 1994, 4);
 `;
 
 async function main() {

@@ -3,7 +3,6 @@ const path = require("path");
 
 // import routes
 const indexRouter = require("./routes/index");
-const newRouter = require("./routes/new");
 
 // express app
 const app = express();
@@ -24,7 +23,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // routes
 app.use("/", indexRouter);
-app.use("/new", newRouter);
 
 // 404 page
 app.use((req, res) => {
