@@ -1,4 +1,4 @@
-const { getAllCategories, deleteCategory } = require("../db/queries");
+const { getAllCategories, deleteCategory, createCategory, getCategoryById, updateCategory } = require("../db/queries");
 
 // controller function to get all categories from db and render the index page
 async function getCategories(req, res) {
@@ -23,4 +23,30 @@ async function removeCategory(req, res) {
   res.redirect("/");
 }
 
-module.exports = { getCategories, renderAbout, removeCategory };
+// controller function to render the add category form
+function renderAddCategoryForm(req, res) {
+  res.render("addCategory", { title: "Add Category" });
+}
+
+// controller function to create a new category and redirect to home
+async function addCategory(req, res) {
+  const { name } = req.body;
+  await createCategory(name);
+  res.redirect("/");
+}
+
+// controller function to render the edit category form pre-filled with current name
+async function renderEditCategoryForm(req, res) {
+  const category = await getCategoryById(req.params.id);
+  if (!category) return res.status(404).render("404", { title: "404" });
+  res.render("editCategory", { title: "Edit Category", category });
+}
+
+// controller function to update a category and redirect to home
+async function editCategory(req, res) {
+  const { name } = req.body;
+  await updateCategory(req.params.id, name);
+  res.redirect("/");
+}
+
+module.exports = { getCategories, renderAbout, removeCategory, renderAddCategoryForm, addCategory, renderEditCategoryForm, editCategory };

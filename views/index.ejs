@@ -5,15 +5,25 @@
     <%- include("./partials/nav.ejs") %>
 
     <div class="categories content">
-      <h2>All Movie Categories</h2>
-      <% categories.forEach(category => { %>
-        <div class="category">
-          <h3><%= category.name %></h3>
-          <form action="/categories/<%= category.id %>/delete" method="POST">
-            <button type="submit">Delete</button>
-          </form>
-        </div>
-      <% }) %>
+      <div class="categories-header">
+        <h2>All Movie Categories</h2>
+        <a href="/categories/new" class="btn-add">+ Add Category</a>
+      </div>
+      <div class="categories-grid">
+        <% categories.forEach(category => { %>
+          <div class="category-card">
+            <div class="category-card-body">
+              <h3><%= category.name %></h3>
+            </div>
+            <div class="category-card-footer">
+              <a href="/categories/<%= category.id %>/edit" class="btn-edit">Edit</a>
+              <form action="/categories/<%= category.id %>/delete" method="POST">
+                <button type="submit" class="btn-delete">Delete</button>
+              </form>
+            </div>
+          </div>
+        <% }) %>
+      </div>
     </div>
 
     <%- include("./partials/footer.ejs") %>

@@ -1,0 +1,18 @@
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <div class="create-message content">
+      <h2>Add a New Category</h2>
+      <form action="/categories/new" method="POST">
+        <label for="name">Category name:</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Science Fiction" required />
+        <button type="submit">Add Category</button>
+      </form>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>
