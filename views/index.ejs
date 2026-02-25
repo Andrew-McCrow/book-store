@@ -5,6 +5,9 @@
     <%- include("./partials/nav.ejs") %>
 
     <div class="categories content">
+      <% if (typeof error !== 'undefined' && error) { %>
+        <div class="error-banner"><%= error %></div>
+      <% } %>
       <div class="categories-header">
         <h2>All Movie Categories</h2>
         <a href="/categories/new" class="btn-add">+ Add Category</a>
@@ -12,9 +15,11 @@
       <div class="categories-grid">
         <% categories.forEach(category => { %>
           <div class="category-card">
-            <div class="category-card-body">
-              <h3><%= category.name %></h3>
-            </div>
+            <a href="/categories/<%= category.id %>" class="category-card-link">
+              <div class="category-card-body">
+                <h3><%= category.name %></h3>
+              </div>
+            </a>
             <div class="category-card-footer">
               <a href="/categories/<%= category.id %>/edit" class="btn-edit">Edit</a>
               <form action="/categories/<%= category.id %>/delete" method="POST">

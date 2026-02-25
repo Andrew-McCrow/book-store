@@ -1,0 +1,39 @@
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <div class="content">
+      <a href="/" class="back-link">&larr; Back to Categories</a>
+      <div class="category-detail-header">
+        <h2><%= category.name %> Movies</h2>
+        <a href="/categories/<%= category.id %>/movies/new" class="btn-add">+ Add Movie</a>
+      </div>
+
+      <% if (movies.length === 0) { %>
+        <p class="no-movies">No movies in this category yet.</p>
+      <% } else { %>
+        <div class="movies-grid">
+          <% movies.forEach(movie => { %>
+            <div class="movie-card">
+              <div class="movie-card-body">
+                <h3><%= movie.title %></h3>
+                <p><%= movie.director %></p>
+                <p class="movie-meta"><%= movie.year_released %></p>
+              </div>
+              <div class="movie-card-footer">
+                <a href="/categories/<%= category.id %>/movies/<%= movie.id %>/edit" class="btn-edit">Edit</a>
+                <form action="/categories/<%= category.id %>/movies/<%= movie.id %>/delete" method="POST">
+                  <button type="submit" class="btn-delete">Delete</button>
+                </form>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>

@@ -29,7 +29,6 @@ async function updateCategory(id, name) {
 }
 
 async function deleteCategory(id) {
-  await pool.query("DELETE FROM movies WHERE category_id = $1", [id]);
   await pool.query("DELETE FROM categories WHERE id = $1", [id]);
 }
 
